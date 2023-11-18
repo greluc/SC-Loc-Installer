@@ -24,5 +24,7 @@ By participating in this project, you agree to abide by its terms.
 * Lucas Greuloch (@greluc)
 
 image:https://upload.wikimedia.org/wikipedia/de/e/e1/Java-Logo.svg[link="https://en.wikipedia.org/wiki/Java_(programming_language)",50]
-image:https://upload.wikimedia.org/wikipedia/commons/0/06/Kotlin_Icon.svg[link="https://kotlinlang.org/",50]
+
+image:https://upload.wikimedia.org/wikipedia/en/c/cc/JavaFX_Logo.png[link="https://en.wikipedia.org/wiki/JavaFX",200]
+
 image:https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg[link="https://spring.io/",200]
