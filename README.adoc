@@ -1,0 +1,28 @@
+= Installer der deutschen Lokalisierung von Star Citizen
+
+== Beschreibung
+
+ToDo
+
+== Current release version
+
+Noch kein Release veröffentlicht
+
+== License
+
+SC-Loc-Installer is licensed under the GNU General Public License v3.0 (GPLv3).
+You can find the license text under link:LICENSE.adoc[LICENSE].
+
+== Contribution
+
+* Please read link:CONTRIBUTING.adoc[CONTRIBUTING] when you wish to contribute to this project.
+* Please note that this project is released with a Contributor link:CODE_OF_CONDUCT.adoc[CODE_OF_CONDUCT].
+By participating in this project, you agree to abide by its terms.
+
+== Team
+
+* Lucas Greuloch (@greluc)
+
+image:https://upload.wikimedia.org/wikipedia/de/e/e1/Java-Logo.svg[link="https://en.wikipedia.org/wiki/Java_(programming_language)",50]
+image:https://upload.wikimedia.org/wikipedia/commons/0/06/Kotlin_Icon.svg[link="https://kotlinlang.org/",50]
+image:https://upload.wikimedia.org/wikipedia/commons/4/44/Spring_Framework_Logo_2018.svg[link="https://spring.io/",200]
