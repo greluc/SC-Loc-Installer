@@ -36,10 +36,10 @@ import org.springframework.context.ApplicationEvent;
  * @since 1.0.0
  * @version 1.0.0
  */
+@Getter
 @EqualsAndHashCode(callSuper = false)
 public class LocaleChangeEvent extends ApplicationEvent {
 
-  @Getter
   private final Locale locale;
 
   /**

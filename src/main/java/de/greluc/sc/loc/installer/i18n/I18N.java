@@ -20,7 +20,7 @@ package de.greluc.sc.loc.installer.i18n;
 
 import static de.greluc.sc.loc.installer.i18n.I18NConstants.I18N_BUNDLE_NAME;
 
-import de.greluc.sc.loc.installer.data.PreferencesData;
+import de.greluc.sc.loc.installer.data.PreferenceData;
 import de.greluc.sc.loc.installer.event.LocaleChangeEvent;
 import java.text.MessageFormat;
 import java.util.Locale;
@@ -58,20 +58,20 @@ public final class I18N {
   @Getter
   private final ObjectProperty<Locale> localeProperty;
   private final ApplicationContext applicationContext;
-  private final PreferencesData preferencesData;
+  private final PreferenceData preferenceData;
   private ResourceBundle bundle;
 
   /**
    * Initializes the I18N and uses {@code getDefaultLocale()} to set the current Locale.
    *
    * @param applicationContext {@code Spring Boot ApplicationContext}.
-   * @param preferencesData Singleton containing all preferences of the application.
+   * @param preferenceData Singleton containing all preferences of the application.
    */
   @Contract(value = "_, _ -> fail", pure = true)
   public I18N(@NotNull @NonNull ApplicationContext applicationContext,
-      PreferencesData preferencesData) {
+      PreferenceData preferenceData) {
     this.applicationContext = applicationContext;
-    this.preferencesData = preferencesData;
+    this.preferenceData = preferenceData;
     localeProperty = new SimpleObjectProperty<>(Locale.getDefault());
     bundle = ResourceBundle.getBundle(I18N_BUNDLE_NAME, localeProperty.get());
     localeProperty.addListener((observable, oldValue, newValue) -> Locale.setDefault(newValue));
@@ -117,7 +117,7 @@ public final class I18N {
    *  supported, it will default to english.
    */
   public void setLocale() {
-    Locale locale = Locale.forLanguageTag(preferencesData.getLanguage());
+    Locale locale = Locale.forLanguageTag(preferenceData.getLanguage());
     if (!getSupportedLocales().contains(locale)) {
       locale = Locale.ENGLISH;
     }

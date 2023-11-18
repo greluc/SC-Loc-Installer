@@ -34,8 +34,6 @@ public class I18NConstants {
   // I18N
   public static final String ALERT_ERROR_HEADER = "alert.error.header";
   public static final String ALERT_ERROR_CONTENT_GENERAL = "alert.error.content.general";
-  public static final String NOTIFICATION_DECLINATION_ERROR_TITLE = "view.declination.error.title";
-  public static final String NOTIFICATION_DECLINATION_ERROR_CONTENT = "view.declination.error.content";
   public static final String VIEW_SETTINGS = "view.settings";
   public static final String VIEW_MAIN_TITLE = "view.main.title";
   public static final String VIEW_MAIN_MENU_FILE = "view.main.menu.file";

@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-public class PreferencesData {
+public class PreferenceData {
   @Getter(onMethod_ = {@Synchronized})
   @Setter(onMethod_ = {@Synchronized})
   private String language = null;

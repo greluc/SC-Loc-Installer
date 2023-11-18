@@ -33,20 +33,18 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  * @version 1.0.0
  */
+@Getter
 @Component
 public class FxmlResources {
 
-  public static final String CLASSPATH = "classpath:";
-  public static final String CLASSPATH_FXML = CLASSPATH + "/fxml/";
-  public static final String CLASSPATH_FXML_MAIN = CLASSPATH_FXML + "MainView.fxml";
-  public static final String CLASSPATH_FXML_CONTENT = CLASSPATH_FXML + "ContentView.fxml";
-  public static final String CLASSPATH_FXML_SETTINGS = CLASSPATH_FXML + "SettingsView.fxml";
+  private static final String CLASSPATH = "classpath:";
+  private static final String CLASSPATH_FXML = CLASSPATH + "/fxml/";
+  private static final String CLASSPATH_FXML_MAIN = CLASSPATH_FXML + "MainView.fxml";
+  private static final String CLASSPATH_FXML_CONTENT = CLASSPATH_FXML + "ContentView.fxml";
+  private static final String CLASSPATH_FXML_SETTINGS = CLASSPATH_FXML + "SettingsView.fxml";
 
-  @Getter
   private final Resource mainView;
-  @Getter
   private final Resource contentView;
-  @Getter
   private final Resource settingsView;
 
   /**

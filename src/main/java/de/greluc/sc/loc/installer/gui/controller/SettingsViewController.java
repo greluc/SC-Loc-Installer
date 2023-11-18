@@ -18,10 +18,10 @@
 
 package de.greluc.sc.loc.installer.gui.controller;
 
-import de.greluc.sc.loc.installer.data.PreferencesData;
+import de.greluc.sc.loc.installer.data.PreferenceData;
 import de.greluc.sc.loc.installer.i18n.I18N;
 import de.greluc.sc.loc.installer.i18n.I18NConstants;
-import de.greluc.sc.loc.installer.service.PreferencesService;
+import de.greluc.sc.loc.installer.service.PreferenceService;
 import java.util.Locale;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,8 +54,8 @@ import org.springframework.stereotype.Component;
 public class SettingsViewController {
 
   private final I18N i18N;
-  private final PreferencesService preferencesService;
-  private final PreferencesData preferencesData;
+  private final PreferenceService preferenceService;
+  private final PreferenceData preferenceData;
   @FXML
   private Menu menuFile;
   @FXML
@@ -67,14 +67,6 @@ public class SettingsViewController {
   @FXML
   private Label labelChooseLocale;
   @FXML
-  private Label labelChooseSimbriefUsername;
-  @FXML
-  private Label labelChooseSimbriefId;
-  @FXML
-  private TextField textFieldSimbriefUsername;
-  @FXML
-  private TextField textFieldSimbriefId;
-  @FXML
   private ComboBox<Locale> comboBoxLocale;
 
 
@@ -82,16 +74,16 @@ public class SettingsViewController {
    * Used for dependency injection.
    *
    * @param i18N Class that handles the I18N in this project.
-   * @param preferencesService Service that persists and loads the preferences.
-   * @param preferencesData Singleton containing all preferences of the application.
+   * @param preferenceService Service that persists and loads the preferences.
+   * @param preferenceData Singleton containing all preferences of the application.
    */
   @Contract(pure = true)
   @Autowired
   @Generated
-  public SettingsViewController(@NotNull @NonNull I18N i18N, PreferencesService preferencesService, PreferencesData preferencesData) {
+  public SettingsViewController(@NotNull @NonNull I18N i18N, PreferenceService preferenceService, PreferenceData preferenceData) {
     this.i18N = i18N;
-    this.preferencesService = preferencesService;
-    this.preferencesData = preferencesData;
+    this.preferenceService = preferenceService;
+    this.preferenceData = preferenceData;
   }
 
   /**
@@ -125,8 +117,8 @@ public class SettingsViewController {
   @FXML
   @Generated
   void saveSettings() {
-    preferencesData.setLanguage(comboBoxLocale.getSelectionModel().getSelectedItem().toLanguageTag());
-    preferencesService.persistPreferences();
+    preferenceData.setLanguage(comboBoxLocale.getSelectionModel().getSelectedItem().toLanguageTag());
+    preferenceService.persistPreferences();
     i18N.setLocale();
     closeWindow();
   }

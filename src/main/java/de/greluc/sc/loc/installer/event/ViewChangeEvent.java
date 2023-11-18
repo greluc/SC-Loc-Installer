@@ -34,10 +34,10 @@ import org.springframework.context.ApplicationEvent;
  * @version 1.0.0
  * @since x.x.x
  */
+@Getter
 @EqualsAndHashCode(callSuper = false)
 public class ViewChangeEvent extends ApplicationEvent {
 
-  @Getter
   private final ViewType viewType;
 
   /**

@@ -18,7 +18,7 @@
 
 package de.greluc.sc.loc.installer.service;
 
-import de.greluc.sc.loc.installer.data.PreferencesData;
+import de.greluc.sc.loc.installer.data.PreferenceData;
 import de.greluc.sc.loc.installer.gui.AlertHandler;
 import de.greluc.sc.loc.installer.i18n.I18N;
 import jakarta.annotation.PostConstruct;
@@ -38,18 +38,18 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class PreferencesService {
+public class PreferenceService {
   private final I18N i18N;
   private final Preferences preferences;
-  private final PreferencesData preferencesData;
+  private final PreferenceData preferenceData;
   private final AlertHandler alertHandler;
   private static final String LANGUAGE = "language";
 
   @Autowired
-  public PreferencesService(I18N i18N, PreferencesData preferencesData, AlertHandler alertHandler) {
+  public PreferenceService(I18N i18N, PreferenceData preferenceData, AlertHandler alertHandler) {
     this.i18N = i18N;
     this.alertHandler = alertHandler;
-    this.preferencesData = preferencesData;
+    this.preferenceData = preferenceData;
     preferences = Preferences.userRoot().node(this.getClass().getName());
   }
 
@@ -59,7 +59,7 @@ public class PreferencesService {
   }
 
   public void persistPreferences() {
-    preferences.put(LANGUAGE, preferencesData.getLanguage());
+    preferences.put(LANGUAGE, preferenceData.getLanguage());
     try {
       preferences.flush();
     } catch (BackingStoreException exception) {
@@ -74,6 +74,6 @@ public class PreferencesService {
     } catch (BackingStoreException e) {
       log.warn("Couldn't load the preferences from the persistent store!");
     }
-    preferencesData.setLanguage(preferences.get(LANGUAGE, i18N.getDefaultLocale().toLanguageTag()));
+    preferenceData.setLanguage(preferences.get(LANGUAGE, i18N.getDefaultLocale().toLanguageTag()));
   }
 }

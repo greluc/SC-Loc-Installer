@@ -24,6 +24,7 @@ import com.pixelduke.transit.TransitTheme;
 import de.greluc.sc.loc.installer.event.BasePaneEvent;
 import de.greluc.sc.loc.installer.event.ViewChangeEvent;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -101,7 +102,7 @@ public class ViewHandler {
   }
 
   /**
-   * Changes the shown view. Publishes a {@link ActiveViewEvent} when a view was changed.
+   * Changes the shown view.
    *
    * @param event Specifies which {@code view} should be loaded/opened.
    */
@@ -174,13 +175,13 @@ public class ViewHandler {
       log.error("Exception while loading a FXML file. IOException!");
       log.debug("Tried to load following file: {}", resource.getFilename(), exception);
       if (log.isTraceEnabled()) {
-        exception.printStackTrace();
+        log.trace(Arrays.toString(exception.getStackTrace()));
       }
     } catch (Exception exception) {
       log.error("Exception while loading a FXML file. General exception!");
       log.debug("Tried to load following file: {}", resource.getFilename(), exception);
       if (log.isTraceEnabled()) {
-        exception.printStackTrace();
+        log.trace(Arrays.toString(exception.getStackTrace()));
       }
     }
     return Optional.empty();

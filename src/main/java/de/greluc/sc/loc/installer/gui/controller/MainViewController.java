@@ -20,13 +20,13 @@ package de.greluc.sc.loc.installer.gui.controller;
 
 import static de.greluc.sc.loc.installer.i18n.I18NConstants.*;
 
-import de.greluc.sc.loc.installer.data.PreferencesData;
+import de.greluc.sc.loc.installer.data.PreferenceData;
 import de.greluc.sc.loc.installer.event.BasePaneEvent;
 import de.greluc.sc.loc.installer.event.ViewChangeEvent;
 import de.greluc.sc.loc.installer.gui.ViewHandler;
 import de.greluc.sc.loc.installer.gui.ViewType;
 import de.greluc.sc.loc.installer.i18n.I18N;
-import de.greluc.sc.loc.installer.service.PreferencesService;
+import de.greluc.sc.loc.installer.service.PreferenceService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
@@ -54,8 +54,8 @@ public class MainViewController {
 
   private final I18N i18N;
   private final ApplicationContext applicationContext;
-  private final PreferencesData preferencesData;
-  private final PreferencesService preferencesService;
+  private final PreferenceData preferenceData;
+  private final PreferenceService preferenceService;
   @FXML
   private GridPane basePane;
   @FXML
@@ -74,19 +74,19 @@ public class MainViewController {
    *
    * @param i18N Class that handles the I18N in this project.
    * @param applicationContext Spring Boot {@link ApplicationContext}.
-   * @param preferencesData Singleton containing all preferences of the application.
-   * @param preferencesService Service that persists and loads the preferences.
+   * @param preferenceData Singleton containing all preferences of the application.
+   * @param preferenceService Service that persists and loads the preferences.
    */
   @Contract(pure = true)
   @Autowired
   @Generated
   public MainViewController(@NotNull @NonNull I18N i18N, ApplicationContext applicationContext,
-      @NotNull @NonNull PreferencesData preferencesData,
-      @NotNull @NonNull PreferencesService preferencesService) {
+      @NotNull @NonNull PreferenceData preferenceData,
+      @NotNull @NonNull PreferenceService preferenceService) {
     this.applicationContext = applicationContext;
     this.i18N = i18N;
-    this.preferencesData = preferencesData;
-    this.preferencesService = preferencesService;
+    this.preferenceData = preferenceData;
+    this.preferenceService = preferenceService;
   }
 
   /**

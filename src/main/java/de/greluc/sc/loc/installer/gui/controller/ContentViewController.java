@@ -44,8 +44,6 @@ import org.springframework.stereotype.Component;
 public class ContentViewController {
 
   private final I18N i18N;
-  @FXML
-  private Label labelWelcome;
 
   /**
    * Used for dependency injection.
