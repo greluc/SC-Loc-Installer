@@ -53,7 +53,7 @@ Following these guidelines helps maintainers and the community to understand you
 
 Before creating bug reports, check <<before-submitting-a-bug-report,this list>> as you might find out that  you don't need to create one.
 When you're creating a bug report, <<how-do-i-submit-a-good-bug-report,include as many details as possible>>.
-Fill out link:.github/ISSUE_TEMPLATE/bug_report.md[the required template], the information it asks for helps us to resolve issues faster.
+Fill out link:.github/ISSUE_TEMPLATE/bug_report.yml[the required template], the information it asks for helps us to resolve issues faster.
 
 [#before-submitting-a-bug-report]
 ==== Before Submitting A Bug Report
@@ -71,7 +71,7 @@ ____
 [#how-do-i-submit-a-good-bug-report]
 ==== How Do I Submit A (Good) Bug Report?
 
-Bugs are tracked as Issues. Provide the following information by filling in link:.github/ISSUE_TEMPLATE/bug_report.md[the template].
+Bugs are tracked as Issues. Provide the following information by filling in link:.github/ISSUE_TEMPLATE/bug_report.yml[the template].
 
 Explain the problem and include additional details to help maintainers reproduce the problem:
 
