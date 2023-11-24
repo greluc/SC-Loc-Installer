@@ -65,9 +65,10 @@ public class I18NConstants {
   public static final String VIEW_CONTENT_CHANNEL_PTU = "view.content.channel.ptu";
   public static final String VIEW_CONTENT_CHANNEL_EPTU = "view.content.channel.eptu";
   public static final String VIEW_CONTENT_CHANNEL_TECH = "view.content.channel.tech";
+  public static final String VIEW_CONTENT_BUTTON_INSTALL = "view.content.button.install";
 
   /**
-   * Used to exclude the unused constructor from code coverage evaluation.
+   * Used to exclude the constructor from code coverage evaluation.
    */
   @Contract(value = " -> fail", pure = true)
   @Generated

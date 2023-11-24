@@ -20,7 +20,6 @@ package de.greluc.sc.loc.installer.gui.controller;
 
 import de.greluc.sc.loc.installer.data.Channel;
 import de.greluc.sc.loc.installer.gui.AlertHandler;
-import de.greluc.sc.loc.installer.gui.ViewType;
 import de.greluc.sc.loc.installer.i18n.I18N;
 import de.greluc.sc.loc.installer.i18n.I18NConstants;
 import javafx.collections.FXCollections;
@@ -37,6 +36,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -57,9 +64,12 @@ public class ContentViewController {
 
   private final I18N i18N;
   private final AlertHandler alertHandler;
+  private Path path = Path.of("C:\\Program Files\\Roberts Space Industries\\StarCitizen");
   
   @FXML
   private Button buttonSelectPath;
+  @FXML
+  private Button buttonInstall;
   @FXML
   private Label labelPath;
   @FXML
@@ -112,7 +122,6 @@ public class ContentViewController {
           case PTU -> i18N.get(I18NConstants.VIEW_CONTENT_CHANNEL_PTU);
           case EPTU -> i18N.get(I18NConstants.VIEW_CONTENT_CHANNEL_EPTU);
           case TECH -> i18N.get(I18NConstants.VIEW_CONTENT_CHANNEL_TECH);
-          default -> i18N.get(I18NConstants.VIEW_CONTENT_CHANNEL_LIVE);
         };
       }
 
@@ -123,6 +132,8 @@ public class ContentViewController {
       }
     });
     
+    textFieldPath.setText(path.toString());
+    
     initTextBindings();
   }
 
@@ -132,6 +143,7 @@ public class ContentViewController {
   @Generated
   private void initTextBindings() {
     i18N.initBinding(buttonSelectPath.textProperty(), I18NConstants.VIEW_CONTENT_BUTTON_PATH);
+    i18N.initBinding(buttonInstall.textProperty(), I18NConstants.VIEW_CONTENT_BUTTON_INSTALL);
     i18N.initBinding(labelPath.textProperty(), I18NConstants.VIEW_CONTENT_LABEL_PATH);
     i18N.initBinding(labelChannel.textProperty(), I18NConstants.VIEW_CONTENT_LABEL_CHANNEL);
     i18N.initBinding(labelLanguage.textProperty(), I18NConstants.VIEW_SETTINGS_LABEL_LANGUAGE);
@@ -141,13 +153,13 @@ public class ContentViewController {
   }
   
   @FXML
-  void setButtonSelectPath() {
+  void selectPath() {
     Optional<Path> pathContainer = showDirectoryChooser();
     if (pathContainer.isEmpty()) {
       return;
     }
-    // TODO checks
-    if (!new File(pathContainer.get() + "\\LIVE\\StarCitizen_Launcher.exe").exists()) {
+    path = Path.of(pathContainer.get() + File.separator + comboBoxChannel.getSelectionModel().getSelectedItem().toString());
+    if (!Files.exists(Path.of(path + File.separator + "StarCitizen_Launcher.exe"))) {
       alertHandler.showAlert(Alert.AlertType.ERROR, VIEW_CONTENT_ALERT_PATH_TITLE, VIEW_CONTENT_ALERT_PATH_HEADER, VIEW_CONTENT_ALERT_PATH_CONTENT);
       return;
     }
@@ -158,7 +170,7 @@ public class ContentViewController {
   /**
    * Opens a dialog in which the user can choose the path to the Star Citizen folder.
    *
-   * @return Optional containing a {@code File} object representing the Star Citizen directory. Empty when
+   * @return An optional containing a {@link Path} object representing the Star Citizen directory. Empty when
    * no directory has been chosen.
    */
   @Contract(value = " -> new", pure = true)
@@ -171,5 +183,55 @@ public class ContentViewController {
       path = outputFile.toPath();
     }
     return Optional.ofNullable(path);
+  }
+  
+  @FXML
+  void install() {
+    log.error("Trying to install");
+    createFolders();
+    download();
+  }
+  
+  boolean createFolders() {
+    log.info("Checking and creating folders");
+    Path tempPath = Path.of(path + File.separator + comboBoxChannel.getSelectionModel().getSelectedItem().toString() + File.separator + "data");
+    if (!Files.exists(tempPath)) {
+      if (!tempPath.toFile().mkdir()) {
+        return false;
+      }
+    }
+    tempPath = Path.of(tempPath + File.separator + "Localization");
+    if (!Files.exists(tempPath)) {
+      if (!tempPath.toFile().mkdir()) {
+        return false;
+      }
+    }
+    tempPath = Path.of(tempPath + File.separator + "german_(germany)");
+    if (!Files.exists(tempPath)) {
+      if (!tempPath.toFile().mkdir()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  boolean download() {
+    Path tempPath = Path.of(path + File.separator + comboBoxChannel.getSelectionModel().getSelectedItem().toString() + File.separator + "data" + File.separator + "Localization" + File.separator + "german_(germany)" + File.separator + "global.ini");
+    log.debug("Checking if global.ini already exists: " + tempPath);
+    if (Files.exists(tempPath)) {
+      log.debug("Trying to delete old global.ini: " + tempPath);
+      return tempPath.toFile().delete();
+    }
+    log.error("Trying to download");
+    try(FileOutputStream fileOutputStream = new FileOutputStream(tempPath.toFile())) {
+      URL url = URI.create("https://raw.githubusercontent.com/rjcncpt/StarCitizen-Deutsch-INI/main/live/global.ini").toURL();
+      ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
+      FileChannel fileChannel = fileOutputStream.getChannel();
+      fileChannel.transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
+      return true;
+    } catch (Exception exception) {
+      log.error("Failed to download and write global.ini");
+      return false;
+    }
   }
 }

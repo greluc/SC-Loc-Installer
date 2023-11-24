@@ -42,7 +42,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
- * Corresponding controller for the MainView (MainView.fxml).
+ * A corresponding controller for the MainView (MainView.fxml).
  *
  * @author Lucas Greuloch (greluc, lucas.greuloch@pm.me)
  * @version 1.0.0
