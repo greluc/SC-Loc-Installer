@@ -25,7 +25,7 @@ plugins {
   id("maven-publish")
   id("org.openjfx.javafxplugin").version("0.1.0") // https://plugins.gradle.org/plugin/org.openjfx.javafxplugin
   id("io.spring.dependency-management").version("1.1.4") // https://plugins.gradle.org/plugin/io.spring.dependency-management
-  id("org.springframework.boot").version("3.1.5") // https://plugins.gradle.org/plugin/org.springframework.boot
+  id("org.springframework.boot").version("3.2.0") // https://plugins.gradle.org/plugin/org.springframework.boot
   id("org.cyclonedx.bom") version "1.8.1" // https://github.com/CycloneDX/cyclonedx-gradle-plugin
 }
 

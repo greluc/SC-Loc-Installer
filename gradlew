@@ -1,8 +1,8 @@
 #!/bin/sh
 
 ################################################################################
-# SC-Loc-Installer                                                             #
-# Copyright (C) 2023-2023 SC-Loc-Installer Team                                #
+# TimeDb Web                                                                   #
+# Copyright (C) 2023 TimeDb Team                                               #
 #                                                                              #
 # This program is free software: you can redistribute it and/or modify         #
 # it under the terms of the GNU General Public License as published by         #

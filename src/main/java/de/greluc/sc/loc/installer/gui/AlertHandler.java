@@ -87,7 +87,7 @@ public class AlertHandler {
     i18N.initBinding(alert.contentTextProperty(), contentKey);
     new TransitTheme(alert.getDialogPane().getScene(), Style.DARK);
     alert.setResizable(true);
-    alert.setHeight(500);
+    alert.setHeight(250);
     alert.setWidth(500);
     alert.showAndWait();
   }

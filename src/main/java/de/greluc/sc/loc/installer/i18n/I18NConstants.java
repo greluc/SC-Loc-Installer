@@ -49,6 +49,22 @@ public class I18NConstants {
   public static final String VIEW_SETTINGS_LABEL_LOG_LEVEL = "view.settings.label.log.level";
   public static final String VIEW_SETTINGS_LABEL_LOG_FILE = "view.settings.label.log.file";
   public static final String I18N_BUNDLE_NAME = "messages";
+  public static final String VIEW_CONTENT_DIRECTORY_TITLE = "view.content.directory.title";
+  public static final String VIEW_CONTENT_LABEL_CHANNEL = "view.content.label.channel";
+  public static final String VIEW_CONTENT_LABEL_LANG = "view.content.label.lang";
+  public static final String VIEW_CONTENT_LABEL_PATH = "view.content.label.path";
+  public static final String VIEW_CONTENT_LABEL_STATUS = "view.content.label.status";
+  public static final String VIEW_CONTENT_LABEL_STATUS_BOX_OK = "view.content.label.status.box.ok";
+  public static final String VIEW_CONTENT_LABEL_STATUS_BOX_NOK = "view.content.label.status.box.nok";
+  public static final String VIEW_CONTENT_BUTTON_PATH = "view.content.button.path";
+  public static final String VIEW_CONTENT_TEXTFIELD_PATH_HINT = "view.content.textfield.path.hint";
+  public static final String VIEW_CONTENT_ALERT_PATH_TITLE = "view.content.alert.path.title";
+  public static final String VIEW_CONTENT_ALERT_PATH_HEADER = "view.content.alert.path.header";
+  public static final String VIEW_CONTENT_ALERT_PATH_CONTENT = "view.content.alert.path.content";
+  public static final String VIEW_CONTENT_CHANNEL_LIVE = "view.content.channel.live";
+  public static final String VIEW_CONTENT_CHANNEL_PTU = "view.content.channel.ptu";
+  public static final String VIEW_CONTENT_CHANNEL_EPTU = "view.content.channel.eptu";
+  public static final String VIEW_CONTENT_CHANNEL_TECH = "view.content.channel.tech";
 
   /**
    * Used to exclude the unused constructor from code coverage evaluation.

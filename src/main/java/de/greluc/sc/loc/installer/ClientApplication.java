@@ -75,11 +75,11 @@ public class ClientApplication extends Application {
     var fxmlResources = (FxmlResources) applicationContext.getBean("fxmlResources");
     var i18N = (I18N) applicationContext.getBean("i18N");
     getPaneFromFxml(fxmlResources.getMainView()).ifPresentOrElse(pane -> {
-      var scene = new Scene(pane, 1000, 700);
+      var scene = new Scene(pane, 600, 300);
       new TransitTheme(scene, Style.DARK).getOverridingStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/font.css")).toExternalForm());
       stage.setScene(scene);
-      stage.setMinWidth(1000);
-      stage.setMinHeight(700);
+      stage.setMinWidth(600);
+      stage.setMinHeight(300);
       i18N.initBinding(stage.titleProperty(), I18NConstants.VIEW_MAIN_TITLE);
       stage.show();
     }, () -> {
@@ -99,7 +99,7 @@ public class ClientApplication extends Application {
    * </p>
    *
    * <p>
-   * NOTE: This method is called on the JavaFX Application Thread.
+   * NOTE: this method is called on the JavaFX Application Thread.
    */
   @Override
   @Generated
