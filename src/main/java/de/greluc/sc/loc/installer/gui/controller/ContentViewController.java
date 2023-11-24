@@ -37,7 +37,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -188,8 +187,10 @@ public class ContentViewController {
   @FXML
   void install() {
     log.error("Trying to install");
-    createFolders();
-    download();
+    if (createFolders()) {
+      downloadIni();
+      downloadCfg();
+    }
   }
   
   boolean createFolders() {
@@ -215,7 +216,7 @@ public class ContentViewController {
     return true;
   }
   
-  boolean download() {
+  boolean downloadIni() {
     Path tempPath = Path.of(path + File.separator + comboBoxChannel.getSelectionModel().getSelectedItem().toString() + File.separator + "data" + File.separator + "Localization" + File.separator + "german_(germany)" + File.separator + "global.ini");
     log.debug("Checking if global.ini already exists: " + tempPath);
     if (Files.exists(tempPath)) {
@@ -231,6 +232,25 @@ public class ContentViewController {
       return true;
     } catch (Exception exception) {
       log.error("Failed to download and write global.ini");
+      return false;
+    }
+  }
+
+  boolean downloadCfg() {
+    Path tempPath = Path.of(path + File.separator + comboBoxChannel.getSelectionModel().getSelectedItem().toString() + File.separator + "user.cfg");
+    log.debug("Checking if user.cfg already exists: " + tempPath);
+    if (Files.exists(tempPath)) {
+      return true;
+    }
+    log.error("Trying to download");
+    try(FileOutputStream fileOutputStream = new FileOutputStream(tempPath.toFile())) {
+      URL url = URI.create("https://raw.githubusercontent.com/rjcncpt/StarCitizen-Deutsch-INI/main/live/user.cfg").toURL();
+      ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
+      FileChannel fileChannel = fileOutputStream.getChannel();
+      fileChannel.transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
+      return true;
+    } catch (Exception exception) {
+      log.error("Failed to download and write user.cfg");
       return false;
     }
   }
