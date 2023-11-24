@@ -89,8 +89,8 @@ public class ContentViewController {
   /**
    * Used for dependency injection.
    *
-   * @param i18N         Class that handles the I18N in this project.
-   * @param alertHandler
+   * @param i18N         This class handles the I18N in this project.
+   * @param alertHandler This class creates the alert windows.
    */
   @Contract(pure = true)
   @Autowired

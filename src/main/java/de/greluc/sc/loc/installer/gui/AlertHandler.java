@@ -52,7 +52,7 @@ public class AlertHandler {
   /**
    * Used for dependency injection.
    *
-   * @param i18N Class that handles the I18N in this project.
+   * @param i18N This Class handles the I18N in this project.
    */
   @Contract(pure = true)
   @Autowired
@@ -72,9 +72,9 @@ public class AlertHandler {
   /**
    * Shows an alert. Uses the {@link FlatAlert} class of the JMetro library.
    *
-   * @param alertType {@link AlertType} that should be used fot the alert.
+   * @param alertType {@link AlertType} that the alert uses.
    * @param titleKey I18N key for the title of the alert window.
-   * @param headerKey I18N key for the short text with main information.
+   * @param headerKey I18N key for the short text with the main information.
    * @param contentKey I18N key for the description of the alert.
    */
   @Generated

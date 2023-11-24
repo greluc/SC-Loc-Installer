@@ -72,10 +72,10 @@ public class MainViewController {
   /**
    * Used for dependency injection.
    *
-   * @param i18N Class that handles the I18N in this project.
+   * @param i18N This class handles the I18N in this project.
    * @param applicationContext Spring Boot {@link ApplicationContext}.
    * @param preferenceData Singleton containing all preferences of the application.
-   * @param preferenceService Service that persists and loads the preferences.
+   * @param preferenceService This Service persists and loads the preferences.
    */
   @Contract(pure = true)
   @Autowired
@@ -90,8 +90,8 @@ public class MainViewController {
   }
 
   /**
-   * Initializes the view. E.g., inits the text bindings for I18N and calls {@link ViewHandler} to
-   * set the child pane.
+   * Initializes the view.
+   * For example, inits the text bindings for I18N and calls {@link ViewHandler} to set the child pane.
    */
   @FXML
   @Generated

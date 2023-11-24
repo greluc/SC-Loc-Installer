@@ -23,7 +23,7 @@ import lombok.Generated;
 import org.jetbrains.annotations.Contract;
 
 /**
- * Holds the keys used in the messages bundle.
+ * Holds the keys used in the message bundle.
  *
  * @author Lucas Greuloch (greluc, lucas.greuloch@pm.me)
  * @since 1.0.0
