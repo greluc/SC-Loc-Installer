@@ -68,13 +68,13 @@ java {
 }
 
 javafx {
-    application {
-        mainClass.set("de.greluc.sc.loc.installer.Installer")
-    }
+  application {
+    mainClass.set("de.greluc.sc.loc.installer.Installer")
+  }
 
-    springBoot {
-        mainClass.set("de.greluc.sc.loc.installer.Installer")
-    }
+  springBoot {
+    mainClass.set("de.greluc.sc.loc.installer.Installer")
+  }
   modules("javafx.controls", "javafx.fxml")
   version = "21"
 }
